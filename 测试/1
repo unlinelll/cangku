@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html class="ie6"> <![endif]-->
+<!--[if IE 7]>
+<html class="ie7"> <![endif]-->
+<!--[if IE 8]>
+<html class="ie8"> <![endif]-->
+<!--[if (gt IE 8)|!(IE)]><!-->
+<html class="no-js">
+  <!--<![endif]-->
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta http-equiv="Cache-Control" content="no-cache" />
+    <script>
+      function detectmob() {
+        return (
+          navigator.userAgent.match(/Android/i) ||
+          navigator.userAgent.match(/webOS/i) ||
+          navigator.userAgent.match(/iPhone/i) ||
+          navigator.userAgent.match(/iPad/i) ||
+          navigator.userAgent.match(/BlackBerry/i) ||
+          navigator.userAgent.match(/Windows Phone/i)
+        );
+      }
+      if (detectmob()) {
+        location.href = 'mobile.html' + location.search + location.hash;
+      }
+    </script>
+    <script>
+      var ua = navigator.userAgent;
+      if (ua.indexOf('MSIE 6.0') > -1 || ua.indexOf('MSIE 7.0') > -1 || ua.indexOf('MSIE 8.0') > -1) {
+        window.location.href = 'unsupport.html';
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <!--主题相关-->
+    <script>
+      // iframe 形式引用，即在应用内(web 或 electron 内)访问
+      if (window.top !== window && location.search.includes('from=web')) {
+        let theme = localStorage.getItem('note-theme');
+        if (theme === 'system') {
+          const matchDark = window.matchMedia('(prefers-color-scheme: dark)');
+          theme = matchDark.matches ? 'dark' : 'light';
+        }
+        const isDark = theme === 'dark';
+        if (isDark) {
+          document.body.style.background = '#202020';
+        }
+        // 标签模式背景色依赖parent`
+        if (location.search.includes('noteMode=lightweightNotes')) {
+          document.documentElement.style.background = 'transparent';
+          document.body.style.background = 'transparent';
+        }
+      }
+    </script>
+
+    <script src="https://cdn.note.youdao.com/ynoteshare/eventListenerIEPolyfill.min.js"></script>
+    <script src="https://cdn.note.youdao.com/ynoteshare/console-polyfill.js"></script>
+    <script src="https://cdn.note.youdao.com/ynoteshare/pomeloclient.js"></script>
+    <script src="https://cdn.note.youdao.com/ynoteshare/socket.io.js"></script>
+    <script src="https://hubble-js-bucket.nosdn.127.net/DATracker.sync.1.6.12.8.js"></script>
+    <script>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement('script');
+        hm.src = '//hm.baidu.com/hm.js?daa6306fe91b10d0ed6b39c4b0a407cd';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+    <script>
+      var _rlog = _rlog || [];
+      _rlog.push(['_setAccount', 'ynote-web-rlogs']);
+      (function () {
+        var hm = document.createElement('script');
+        hm.src = 'https://shared.ydstatic.com/js/rlog/v1.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+    <script type="text/javascript">
+      DATracker.init('MA-9057-2B94435F5EF6', {
+        debug: false,
+        use_app_track: true,
+        truncateLength: 255,
+        persistence: 'localStorage',
+        cross_subdomain_cookie: false,
+        heatmap: {
+          collect_all: true,
+        },
+      });
+    </script>
+
+    <script>
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        (i[r] =
+          i[r] ||
+          function () {
+            (i[r].q = i[r].q || []).push(arguments);
+          }),
+          (i[r].l = 1 * new Date());
+        (a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]);
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m);
+      })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+      ga('create', 'UA-61951606-4', 'auto');
+      ga('send', 'pageview');
+    </script>
+  <script type="text/javascript" src="https://cdn.note.youdao.com/ynoteshare//index.8f9bf7aa.bundle.js"></script></body>
+  <script>
+    if (/YNoteCef/i.test(navigator.userAgent)) {
+      document.body.className = 'pc';
+    }
+  </script>
+</html>
